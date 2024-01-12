@@ -18,8 +18,8 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
             android:src="@drawable/backbutton"
@@ -35,7 +35,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Sign In"
-            android:textColor="#EBA526"
+            android:textColor="#D9806C"
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -139,7 +139,7 @@
             android:gravity="right"
             android:paddingEnd="30dp"
             android:text="Forget Password?"
-            android:textColor="#E8C98A"
+            android:textColor="#D9806C"
             android:textSize="18sp" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -149,7 +149,7 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/login_button"
             android:text="Sign in"
-            android:textColor="#BF9A73"
+            android:textColor="#D9806C"
             android:textSize="30sp" />
 
         <LinearLayout

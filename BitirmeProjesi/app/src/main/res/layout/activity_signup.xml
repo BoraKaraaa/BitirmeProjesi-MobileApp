@@ -35,7 +35,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Sign Up"
-            android:textColor="#EBA526"
+            android:textColor="#D9806C"
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -221,7 +221,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/login_button"
             android:text="Sign in"
-            android:textColor="#BF9A73"
+            android:textColor="#D9806C"
             android:textSize="30sp" />
 
         <LinearLayout
