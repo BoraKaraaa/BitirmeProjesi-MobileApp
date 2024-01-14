@@ -15,7 +15,7 @@
         android:layout_height="110dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -34,7 +34,7 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textColor="#D9806C"
             android:textSize="35sp"
             android:textStyle="bold"
@@ -64,13 +64,14 @@
                 android:paddingStart="5dp"
 
                 android:paddingBottom="5dp"
-                android:text="Name"
+                android:text="@string/name"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/username_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -85,7 +86,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_name"
-                android:hint="UserName"/>
+                android:hint="@string/username"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -105,13 +106,14 @@
                 android:paddingStart="5dp"
 
                 android:paddingBottom="5dp"
-                android:text="E-mail"
+                android:text="@string/e_mail"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/mail_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -126,7 +128,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_email"
-                android:hint="Mail"/>
+                android:hint="@string/mail"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -146,13 +148,14 @@
                 android:paddingStart="5dp"
 
                 android:paddingBottom="5dp"
-                android:text="Password"
+                android:text="@string/password"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -170,7 +173,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_password"
-                android:hint="Password"/>
+                android:hint="@string/password"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -189,13 +192,14 @@
                 android:paddingStart="5dp"
 
                 android:paddingBottom="5dp"
-                android:text="Confirm Password"
+                android:text="@string/confirm_password"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/confirm_password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -215,12 +219,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_up_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/login_button"
-            android:text="Sign in"
+            android:text="@string/sign_up"
             android:textColor="#D9806C"
             android:textSize="30sp" />
 
@@ -242,7 +247,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="Or Sign up with"
+                android:text="@string/or_sign_up_with"
                 android:textSize="15sp" />
 
             <View
@@ -262,6 +267,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/google_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
@@ -270,6 +276,7 @@
             android:src="@drawable/google_button" />
 
         <ImageView
+            android:id="@+id/facebook_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
@@ -284,7 +291,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:paddingBottom="15dp"
-        android:text="Already have an account? Sign In"
+        android:text="@string/already_have_an_account_sign_in"
         android:textSize="15sp"/>
 
 </LinearLayout>

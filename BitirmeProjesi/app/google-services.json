@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "653293713219",
+    "project_id": "bitirmeprojesi-firebase",
+    "storage_bucket": "bitirmeprojesi-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653293713219:android:859333efd234220b3021f6",
+        "android_client_info": {
+          "package_name": "com.example.bitirmeprojesi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX9vKiqVF4FuhuIdAZc14g2JrBFSMzmRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653293713219:android:0f1e296e9bcec5c83021f6",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX9vKiqVF4FuhuIdAZc14g2JrBFSMzmRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
