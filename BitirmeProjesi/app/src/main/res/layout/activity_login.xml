@@ -121,7 +121,6 @@
                 android:allowUndo="true"
                 android:background="@drawable/textbackground"
                 android:drawableStart="@drawable/lock"
-                android:drawableEnd="@drawable/eye_slash"
 
                 android:hint="@string/password"
                 android:paddingLeft="10dp"
@@ -129,31 +128,53 @@
                 android:paddingRight="10dp"
                 android:singleLine="true"
 
+                android:inputType="textPassword"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_password" />
+
+            <ImageView
+                android:id="@+id/password_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/eye_slash"
+                app:layout_constraintBottom_toBottomOf="@id/password_edit_text"
+                app:layout_constraintTop_toTopOf="@id/password_edit_text"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/password_edit_text"
+                android:paddingRight="50dp"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/forget_password_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:layout_gravity="right"
             android:paddingEnd="30dp"
             android:text="@string/forget_password"
             android:textColor="#D9806C"
             android:textSize="18sp" />
+
+        <ProgressBar
+            android:id="@+id/register_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            android:layout_gravity="center"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="80dp"
             android:background="@drawable/login_button"
             android:text="@string/sign_in"
             android:textColor="#D9806C"
+            android:layout_marginTop="10dp"
             android:textSize="30sp" />
 
         <LinearLayout
@@ -213,13 +234,13 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/sign_in_text"
+        android:id="@+id/sign_up_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:paddingBottom="15dp"
-        android:text="@string/already_have_an_account_sign_in"
+        android:text="@string/don_t_have_an_account_sign_up"
         android:textSize="15sp"/>
 
 </LinearLayout>

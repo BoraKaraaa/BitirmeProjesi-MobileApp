@@ -162,7 +162,6 @@
                 android:allowUndo="true"
                 android:background="@drawable/textbackground"
                 android:drawableStart="@drawable/lock"
-                android:drawableEnd="@drawable/eye_slash"
 
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -170,10 +169,24 @@
                 android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
 
+                android:inputType="textPassword"
+
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_password"
                 android:hint="@string/password"/>
+
+            <ImageView
+                android:id="@+id/password_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/eye_slash"
+                app:layout_constraintBottom_toBottomOf="@id/password_edit_text"
+                app:layout_constraintTop_toTopOf="@id/password_edit_text"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/password_edit_text"
+                android:paddingRight="50dp"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -205,19 +218,38 @@
 
                 android:allowUndo="true"
                 android:background="@drawable/textbackground"
-                android:drawableEnd="@drawable/eye_slash"
 
                 android:paddingRight="10dp"
 
                 android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
 
+                android:inputType="textPassword"
+
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_confirm_password"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/confirm_password_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/eye_slash"
+                app:layout_constraintBottom_toBottomOf="@id/confirm_password_edit_text"
+                app:layout_constraintTop_toTopOf="@id/confirm_password_edit_text"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/confirm_password_edit_text"
+                android:paddingRight="50dp"/>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+        <ProgressBar
+            android:id="@+id/register_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center"/>
+        
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sign_up_button"
             android:layout_width="match_parent"
@@ -286,6 +318,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/login_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="sans-serif"
