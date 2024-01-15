@@ -1,27 +1,38 @@
 package com.example.bitirmeprojesi;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class FireBaseRegisterHelper
 {
-    FirebaseAuth mAuth;
+    FirebaseAuth firebaseAuth;
+
     public FireBaseRegisterHelper()
     {
-        mAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public void registerNewUser(String email, String password,
                                 OnCompleteListener<AuthResult> onCompleteListener)
     {
-        mAuth.createUserWithEmailAndPassword(email, password)
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(onCompleteListener);
     }
 
     public void logIn(String email, String password,
                       OnCompleteListener<AuthResult> onCompleteListener)
     {
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(onCompleteListener);
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(onCompleteListener);
+    }
+
+    public void resetPassword(String email, OnSuccessListener<Void> onSuccessListener,
+                              OnFailureListener onFailureListener)
+    {
+        firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener(onSuccessListener)
+                .addOnFailureListener(onFailureListener);
     }
 }

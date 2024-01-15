@@ -1,5 +1,6 @@
 package com.example.bitirmeprojesi;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.text.InputType;
 import android.view.View;
@@ -13,6 +14,18 @@ public class RegisterHelper
     public final String USERNAME_REGEX = "^[a-zA-Z][a-zA-Z0-9_-]{2,15}$";
     public final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     public final String PASSWORD_REGEX = "^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$";
+
+    public void backButtonListener(Activity activity, View view)
+    {
+        view.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                activity.onBackPressed();
+            }
+        });
+    }
 
     public void clickablePasswordEye(ImageView eyeImage, EditText passwordEditText)
     {
