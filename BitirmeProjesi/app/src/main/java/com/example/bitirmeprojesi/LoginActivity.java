@@ -133,7 +133,8 @@ public class LoginActivity extends AppCompatActivity
                     String email = registerHelper.getProperEmail(editTextEmail);
                     String password = registerHelper.getProperPassword(editTextPassword);
 
-                    fireBaseRegisterHelper.logIn(email, password, new OnCompleteListener<AuthResult>() {
+                    fireBaseRegisterHelper.logIn(email, password, new OnCompleteListener<AuthResult>()
+                    {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task)
                         {
