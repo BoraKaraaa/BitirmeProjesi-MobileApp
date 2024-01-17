@@ -12,7 +12,20 @@
           "package_name": "com.example.bitirmeprojesi"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "653293713219-sae4mvj3fcb9conk7jd32qha0i7qbrna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bitirmeprojesi",
+            "certificate_hash": "ca56043957afdeec005aceb3bf4278d38e52191c"
+          }
+        },
+        {
+          "client_id": "653293713219-tb72drue8glh2ejkea6snmkec9em6tpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBX9vKiqVF4FuhuIdAZc14g2JrBFSMzmRg"
@@ -20,26 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:653293713219:android:0f1e296e9bcec5c83021f6",
-        "android_client_info": {
-          "package_name": "com.example.myapplication"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBX9vKiqVF4FuhuIdAZc14g2JrBFSMzmRg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653293713219-tb72drue8glh2ejkea6snmkec9em6tpl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
