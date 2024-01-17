@@ -27,8 +27,6 @@ public class ChatGPTHelper
     public void callChatGPT(String question, OnFailureListener onFailureListener,
                             OnSuccessListener<String> onSuccessListener)
     {
-        //messageList.add(new Message("Typing...", Message.SENT_BY_BOT));
-
         JSONObject jsonBody = new JSONObject();
 
         try
@@ -57,7 +55,6 @@ public class ChatGPTHelper
             public void onFailure(@NonNull Call call, @NonNull IOException e)
             {
                 onFailureListener.onFailure(new Exception("Failed to load response " + e.getMessage()));
-                //addResponse("Failed to load response due to -> " + e.getMessage());
             }
 
             @Override
@@ -73,7 +70,6 @@ public class ChatGPTHelper
                         String result = jsonArray.getJSONObject(0).getString("text");
 
                         onSuccessListener.onSuccess(result.trim());
-                        //addResponse(result.trim());
                     }
                     catch (JSONException e)
                     {
@@ -83,7 +79,6 @@ public class ChatGPTHelper
                 else
                 {
                     onFailureListener.onFailure(new Exception("Failed to load response " + response.code()));
-                    //addResponse("Failed to load response " + response.code());
                 }
             }
         });

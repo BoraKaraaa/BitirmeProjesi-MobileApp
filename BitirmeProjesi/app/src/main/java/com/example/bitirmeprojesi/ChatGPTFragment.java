@@ -71,7 +71,6 @@ public class ChatGPTFragment extends Fragment
         {
             String question = messageEditText.getText().toString().trim();
 
-            //Toast.makeText(this, question, Toast.LENGTH_LONG).show();
             addToChat(question, Message.SENT_BY_ME);
             messageEditText.setText("");
 
