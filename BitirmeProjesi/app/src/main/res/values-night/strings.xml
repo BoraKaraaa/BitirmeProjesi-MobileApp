@@ -13,4 +13,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="don_t_have_an_account_sign_up">Don\'t have an account?</string>
+    <string name="calendar_nav">calendar</string>
+    <string name="home_nav">home</string>
+    <string name="recipe_nav">recipe</string>
 </resources>
