@@ -1,0 +1,7 @@
+runtime: php81
+entrypoint: serve handler.php 
+
+handlers:
+- url: /.* 
+  script: auto  
+  secure: always

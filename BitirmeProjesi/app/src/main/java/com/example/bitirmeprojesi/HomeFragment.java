@@ -57,6 +57,8 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
+
+
                 for (int i = 0; i < 7; i++)
                 {
                     dayFrameLayouts[i].setBackground(null);

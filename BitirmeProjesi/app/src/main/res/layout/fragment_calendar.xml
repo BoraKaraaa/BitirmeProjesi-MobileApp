@@ -6,6 +6,7 @@
     tools:context=".CalendarFragment">
 
     <TextView
+        android:id="@+id/data_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="CALENDAR"
