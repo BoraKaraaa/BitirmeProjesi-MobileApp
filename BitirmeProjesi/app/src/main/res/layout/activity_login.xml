@@ -14,20 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="185dp">
 
-        <ImageView
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
-            android:src="@drawable/backbutton"
-            app:layout_constraintHeight="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth="50dp" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

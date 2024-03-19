@@ -1,5 +1,6 @@
 package com.example.bitirmeprojesi;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,8 @@ public class HomeFragment extends Fragment
     FrameLayout[] dayFrameLayouts = new FrameLayout[7];
     ImageView[] dayPointImage = new ImageView[7];
 
+    ImageView profileImage;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
@@ -26,6 +29,7 @@ public class HomeFragment extends Fragment
 
         initViews(view);
 
+        setProfileImageListener();
         setDayFramesListener();
 
         return view;
@@ -33,6 +37,8 @@ public class HomeFragment extends Fragment
 
     private void initViews(View view)
     {
+        profileImage = view.findViewById(R.id.profile_image);
+
         dayFrameLayouts[0] = view.findViewById(R.id.day_1_frame);
         dayFrameLayouts[1] = view.findViewById(R.id.day_2_frame);
         dayFrameLayouts[2] = view.findViewById(R.id.day_3_frame);
@@ -48,6 +54,19 @@ public class HomeFragment extends Fragment
         dayPointImage[4] = view.findViewById(R.id.day_point_image_5);
         dayPointImage[5] = view.findViewById(R.id.day_point_image_6);
         dayPointImage[6] = view.findViewById(R.id.day_point_image_7);
+    }
+
+    private void setProfileImageListener()
+    {
+        profileImage.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getActivity(), UserInformation.class).putExtra("from", "MainActivity");
+                startActivity(intent);
+            }
+        });
     }
 
     private void setDayFramesListener()

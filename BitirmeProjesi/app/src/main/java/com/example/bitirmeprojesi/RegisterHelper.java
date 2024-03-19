@@ -97,7 +97,7 @@ public class RegisterHelper
     public void setEditTextDefault(EditText editText, String defaultString)
     {
         editText.setHintTextColor(Color.GRAY);
-        editText.setHint("UserName");
+        editText.setHint(defaultString);
     }
 
     public void handleInvalidEditTextInput(String errorMessage, EditText editTextUserName)

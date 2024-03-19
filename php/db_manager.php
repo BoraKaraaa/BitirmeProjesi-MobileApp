@@ -76,7 +76,7 @@ function insertData($tableName, $data)
 function updateData($tableName, $tableIds, $id, $data)
 {
     $conn = connectDatabase();
-
+    
     $setValues = [];
     foreach ($data as $key => $value) 
     {
@@ -84,7 +84,7 @@ function updateData($tableName, $tableIds, $id, $data)
     }
 
     $setValuesStr = implode(", ", $setValues);
-    $sql = "UPDATE $tableName SET $setValuesStr WHERE $tableIds[$tableName] = $id";
+    $sql = "UPDATE $tableName SET $setValuesStr WHERE $tableIds[$tableName] = '$id'";
 
     if (mysqli_query($conn, $sql)) 
     {
@@ -103,7 +103,7 @@ function deleteData($tableName, $tableIds, $id)
 {
     $conn = connectDatabase();
 
-    $sql = "DELETE FROM $tableName WHERE $tableIds[$tableName] = $id";
+    $sql = "DELETE FROM $tableName WHERE $tableIds[$tableName] = '$id'";
 
     if (mysqli_query($conn, $sql)) 
     {
@@ -113,6 +113,7 @@ function deleteData($tableName, $tableIds, $id)
     {
         echo json_encode(['error' => 'Error deleting data: ' . mysqli_error($conn)]);
     }
+
     mysqli_close($conn);
 }
 

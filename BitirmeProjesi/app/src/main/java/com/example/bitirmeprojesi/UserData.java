@@ -34,6 +34,19 @@ public class UserData extends Data
         this.RegionID = regionID;
     }
 
+    public UserData(String userID, String username, String email)
+    {
+        this.UserID = userID;
+        this.Username = username;
+        this.Email = email;
+    }
+
+    public UserData(String userID, String email)
+    {
+        this.UserID = userID;
+        this.Email = email;
+    }
+
     // Getters and Setters
     public String getUserID() {
         return UserID;

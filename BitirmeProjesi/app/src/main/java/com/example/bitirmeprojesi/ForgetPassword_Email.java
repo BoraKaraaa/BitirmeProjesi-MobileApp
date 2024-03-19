@@ -5,17 +5,22 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.util.List;
 
 
 public class ForgetPassword_Email extends Fragment
@@ -23,9 +28,11 @@ public class ForgetPassword_Email extends Fragment
     private Button resetPasswordButton;
     private EditText emailEditText;
     private ProgressBar progressBar;
+    private ImageView backImage;
 
     private RegisterHelper registerHelper;
     private FireBaseRegisterHelper fireBaseRegisterHelper;
+    private GoogleMySQLDataBase googleMySQLDataBase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -34,6 +41,7 @@ public class ForgetPassword_Email extends Fragment
 
         registerHelper = new RegisterHelper();
         fireBaseRegisterHelper = new FireBaseRegisterHelper();
+        googleMySQLDataBase = new GoogleMySQLDataBase(getContext());
 
         initViews(view);
 
@@ -47,6 +55,7 @@ public class ForgetPassword_Email extends Fragment
         resetPasswordButton = view.findViewById(R.id.forget_password_reset_password_button);
         emailEditText = view.findViewById(R.id.forget_password_email_edit_text);
         progressBar = view.findViewById(R.id.register_progressbar);
+        backImage = view.findViewById(R.id.back_button);
     }
 
     private void setResetPasswordButtonListener()
@@ -62,30 +71,57 @@ public class ForgetPassword_Email extends Fragment
 
                     progressBar.setVisibility(View.VISIBLE);
 
-                    fireBaseRegisterHelper.resetPassword(email, new OnSuccessListener<Void>()
+                    googleMySQLDataBase.getTable(DataTables.User, UserData.class, new DataBase.MultipleDataCallback<UserData>()
                     {
                         @Override
-                        public void onSuccess(Void unused)
+                        public void onResponse(List<UserData> dataList)
                         {
-                            Toast.makeText(getActivity(),
-                                    "Reset Password link has been sent to your registered Email",
-                                    Toast.LENGTH_SHORT).show();
+                            boolean isEmailFounded = false;
 
-                            Intent intent = new Intent(getActivity(), LoginActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
-                        }
-                    }, new OnFailureListener()
-                    {
-                        @Override
-                        public void onFailure(@NonNull Exception e)
-                        {
-                            Toast.makeText(getActivity(),
-                                    "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            for (int i = 0; i < dataList.size(); i++)
+                            {
+                                if(dataList.get(i).getEmail().equals(email))
+                                {
+                                    fireBaseRegisterHelper.resetPassword(email, new OnSuccessListener<Void>()
+                                    {
+                                        @Override
+                                        public void onSuccess(Void unused)
+                                        {
+                                            Toast.makeText(getActivity(),
+                                                    "Reset Password link has been sent to your registered Email",
+                                                    Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                                            Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                            startActivity(intent);
+                                            getActivity().finish();
+                                        }
+                                    }, new OnFailureListener()
+                                    {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e)
+                                        {
+                                            Toast.makeText(getActivity(),
+                                                    "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                            progressBar.setVisibility(View.GONE);
+                                        }
+                                    });
+
+                                    isEmailFounded = true;
+                                    break;
+                                }
+                            }
+
+                            if(!isEmailFounded)
+                            {
+                                progressBar.setVisibility(View.GONE);
+
+                                Toast.makeText(getActivity(), "Email Not Founded",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
+
                 }
                 catch (RegisterException e)
                 {

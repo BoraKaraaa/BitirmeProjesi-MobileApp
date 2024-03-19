@@ -1,0 +1,217 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="User Information"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif" />
+
+        <EditText
+            android:id="@+id/editTextIsim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:background="@drawable/textbackground"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:allowUndo="true"
+            android:layout_marginBottom="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender:"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:paddingRight="20dp" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/cinsiyetler"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextYas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Yaş"
+            android:inputType="number"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/textbackground"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:allowUndo="true"/>
+
+        <EditText
+            android:id="@+id/editTextBoy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Boy (cm)"
+            android:inputType="number"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/textbackground"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:allowUndo="true"/>
+
+        <EditText
+            android:id="@+id/editTextKilo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kilo (kg)"
+            android:inputType="number"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/textbackground"
+            android:paddingStart="10dp"
+            android:singleLine="true"
+            android:allowUndo="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goal:"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:paddingRight="45dp"/>
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/hedefler"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity Level:"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:paddingRight="10dp"/>
+
+            <Spinner
+                android:id="@+id/spinner6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/activty_level"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diet Pref:"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:paddingRight="10dp"/>
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/diyet_tercihleri"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Country:"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:paddingRight="18dp"/>
+
+            <Spinner
+                android:id="@+id/spinner4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/countries"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Region:"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:paddingRight="25dp"/>
+
+            <Spinner
+                android:id="@+id/spinner5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/diyet_tercihleri"/>
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_user_information_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:background="@drawable/login_button"
+            android:text="SAVE"
+            android:textColor="#F3EEF3"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+</ScrollView>

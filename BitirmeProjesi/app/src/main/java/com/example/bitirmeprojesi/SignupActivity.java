@@ -30,6 +30,7 @@ public class SignupActivity extends AppCompatActivity
     RegisterHelper registerHelper;
     FireBaseRegisterHelper fireBaseRegisterHelper;
     GoogleRegisterHelper googleRegisterHelper;
+    GoogleMySQLDataBase googleMySQLDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +41,7 @@ public class SignupActivity extends AppCompatActivity
         registerHelper = new RegisterHelper();
         fireBaseRegisterHelper = new FireBaseRegisterHelper();
         googleRegisterHelper = new GoogleRegisterHelper(this, getApplicationContext());
+        googleMySQLDataBase = new GoogleMySQLDataBase(this);
 
         initViews();
         updateUI();
@@ -136,6 +138,10 @@ public class SignupActivity extends AppCompatActivity
                             {
                                 Toast.makeText(SignupActivity.this, "Account Created.",
                                         Toast.LENGTH_SHORT).show();
+
+                                UserData userData = new UserData(fireBaseRegisterHelper.firebaseAuth.getUid(),
+                                        userName, email);
+                                googleMySQLDataBase.insert(DataTables.User, UserData.class, userData);
 
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);

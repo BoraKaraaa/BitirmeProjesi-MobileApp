@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/left_chat_view"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="#34558C"
+        android:backgroundTint="#E8D5DE"
         android:padding="8dp"
         android:layout_marginEnd="80dp"
         android:layout_alignParentLeft="true"
@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/left_chat_text_view"
             android:textColor="@color/white"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:fontFamily="sans-serif-medium"/>
     </LinearLayout>
 
     <LinearLayout
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/right_chat_view"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="#703C4E"
+        android:backgroundTint="#DFB5C4"
         android:padding="8dp"
         android:layout_marginStart="80dp"
         android:layout_alignParentRight="true"
@@ -38,7 +39,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/right_chat_text_view"
             android:textColor="@color/white"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:fontFamily="sans-serif-medium"/>
     </LinearLayout>
 
 </RelativeLayout>

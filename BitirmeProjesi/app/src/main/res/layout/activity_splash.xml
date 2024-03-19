@@ -16,7 +16,7 @@
         android:layout_marginTop="301dp"
         android:layout_marginEnd="142dp"
         android:layout_marginBottom="302dp"
-        android:src="@drawable/orange_splash"
+        android:src="@drawable/kedi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
