@@ -37,7 +37,7 @@ function getDataById($tableName, $tableIds, $id)
 {
     $conn = connectDatabase();      
 
-    $sql = "SELECT * FROM $tableName WHERE $tableIds[$tableName] = $id";
+    $sql = "SELECT * FROM $tableName WHERE $tableIds[$tableName] = '$id'";
     $result = mysqli_query($conn, $sql);
 
     $data = null;

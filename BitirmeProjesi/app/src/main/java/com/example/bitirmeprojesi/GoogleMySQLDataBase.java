@@ -28,7 +28,7 @@ public class GoogleMySQLDataBase extends DataBase
     }
 
     @Override
-    public <T> T getById(DataTables dataTables, Class<T> type, int id, final SingleDataCallback<T> callback)
+    public <T> T getById(DataTables dataTables, Class<T> type, String id, final SingleDataCallback<T> callback)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = baseURL + "?action=db_manager&operation=get_by_id&table_name=" + dataTables.getTableName() + "&id=" + id;
@@ -141,7 +141,7 @@ public class GoogleMySQLDataBase extends DataBase
     }
 
     @Override
-    public <T> void update(DataTables dataTables, Class<T> type, int id, T entity)
+    public <T> void update(DataTables dataTables, Class<T> type, String id, T entity)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
         Gson gson = new Gson();
@@ -169,7 +169,7 @@ public class GoogleMySQLDataBase extends DataBase
     }
 
     @Override
-    public <T> void delete(DataTables dataTables, Class<T> type, int id)
+    public <T> void delete(DataTables dataTables, Class<T> type, String id)
     {
         RequestQueue queue = Volley.newRequestQueue(context);
 

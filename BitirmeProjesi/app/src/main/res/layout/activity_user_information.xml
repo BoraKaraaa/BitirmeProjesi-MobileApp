@@ -10,6 +10,13 @@
         android:orientation="vertical"
         android:padding="25dp">
 
+
+        <ImageView
+            android:id="@+id/backImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/backbutton" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,11 +25,10 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginBottom="40dp"
-            android:layout_marginTop="30dp"
             android:fontFamily="sans-serif" />
 
         <EditText
-            android:id="@+id/editTextIsim"
+            android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
@@ -48,7 +54,7 @@
                 android:paddingRight="20dp" />
 
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/genderSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/cinsiyetler"/>
@@ -56,7 +62,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editTextYas"
+            android:id="@+id/ageEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Yaş"
@@ -68,7 +74,7 @@
             android:allowUndo="true"/>
 
         <EditText
-            android:id="@+id/editTextBoy"
+            android:id="@+id/heightEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Boy (cm)"
@@ -80,7 +86,7 @@
             android:allowUndo="true"/>
 
         <EditText
-            android:id="@+id/editTextKilo"
+            android:id="@+id/weightEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Kilo (kg)"
@@ -106,7 +112,7 @@
                 android:paddingRight="45dp"/>
 
             <Spinner
-                android:id="@+id/spinner2"
+                android:id="@+id/goalSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/hedefler"/>
@@ -128,7 +134,7 @@
                 android:paddingRight="10dp"/>
 
             <Spinner
-                android:id="@+id/spinner6"
+                android:id="@+id/activityLevelSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/activty_level"/>
@@ -150,7 +156,7 @@
                 android:paddingRight="10dp"/>
 
             <Spinner
-                android:id="@+id/spinner3"
+                android:id="@+id/dietPreferenceSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/diyet_tercihleri"/>
@@ -171,7 +177,7 @@
                 android:paddingRight="18dp"/>
 
             <Spinner
-                android:id="@+id/spinner4"
+                android:id="@+id/countrySpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -193,7 +199,7 @@
                 android:paddingRight="25dp"/>
 
             <Spinner
-                android:id="@+id/spinner5"
+                android:id="@+id/regionSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -143,6 +143,8 @@ public class SignupActivity extends AppCompatActivity
                                         userName, email);
                                 googleMySQLDataBase.insert(DataTables.User, UserData.class, userData);
 
+                                saveCurrentUserID(fireBaseRegisterHelper.firebaseAuth.getUid());
+
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -166,5 +168,13 @@ public class SignupActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    private void saveCurrentUserID(String id)
+    {
+        SharedPreferences userID = getSharedPreferences("User", MODE_PRIVATE);
+        SharedPreferences.Editor userIDEdit = userID.edit();
+        userIDEdit.putString("UserID", id);
+        userIDEdit.apply();
     }
 }

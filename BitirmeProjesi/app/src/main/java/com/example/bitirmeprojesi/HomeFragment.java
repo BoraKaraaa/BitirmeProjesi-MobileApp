@@ -1,6 +1,8 @@
 package com.example.bitirmeprojesi;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,14 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class HomeFragment extends Fragment
 {
+    TextView homeText;
     FrameLayout[] dayFrameLayouts = new FrameLayout[7];
     ImageView[] dayPointImage = new ImageView[7];
-
     ImageView profileImage;
+
+    SharedPreferences userPref;
+    GoogleMySQLDataBase googleMySQLDataBase;
+
+    private final String WELCOME_PREFIX = "Hello, ";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,8 +34,11 @@ public class HomeFragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        googleMySQLDataBase = new GoogleMySQLDataBase(getContext());
 
         initViews(view);
+
+        setHomeText();
 
         setProfileImageListener();
         setDayFramesListener();
@@ -37,6 +48,7 @@ public class HomeFragment extends Fragment
 
     private void initViews(View view)
     {
+        homeText = view.findViewById(R.id.homeText);
         profileImage = view.findViewById(R.id.profile_image);
 
         dayFrameLayouts[0] = view.findViewById(R.id.day_1_frame);
@@ -54,6 +66,28 @@ public class HomeFragment extends Fragment
         dayPointImage[4] = view.findViewById(R.id.day_point_image_5);
         dayPointImage[5] = view.findViewById(R.id.day_point_image_6);
         dayPointImage[6] = view.findViewById(R.id.day_point_image_7);
+    }
+
+    private void setHomeText()
+    {
+        userPref = this.getActivity().getSharedPreferences("User", Context.MODE_PRIVATE);
+
+        String userID = userPref.getString("UserID", "");
+
+        if(!userID.equals(""))
+        {
+            googleMySQLDataBase.getById(DataTables.User, UserData.class, userID, new DataBase.SingleDataCallback<UserData>()
+            {
+                @Override
+                public void onResponse(UserData data)
+                {
+                    if(data.getUsername() != null)
+                    {
+                        homeText.setText(WELCOME_PREFIX + data.getUsername());
+                    }
+                }
+            });
+        }
     }
 
     private void setProfileImageListener()

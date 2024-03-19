@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -145,6 +146,8 @@ public class LoginActivity extends AppCompatActivity
                                 Toast.makeText(LoginActivity.this, "Authentication Success.",
                                         Toast.LENGTH_SHORT).show();
 
+                                saveCurrentUserID(fireBaseRegisterHelper.firebaseAuth.getUid());
+
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -168,5 +171,13 @@ public class LoginActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    private void saveCurrentUserID(String id)
+    {
+        SharedPreferences userID = getSharedPreferences("User", MODE_PRIVATE);
+        SharedPreferences.Editor userIDEdit = userID.edit();
+        userIDEdit.putString("UserID", id);
+        userIDEdit.apply();
     }
 }

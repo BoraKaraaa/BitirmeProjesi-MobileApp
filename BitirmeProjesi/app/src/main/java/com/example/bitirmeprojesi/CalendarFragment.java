@@ -25,23 +25,11 @@ public class CalendarFragment extends Fragment
 
         initViews(view);
 
-        testDataBase();
-
         return view;
     }
 
     private void initViews(View view)
     {
         linearLayout = view.findViewById(R.id.program_layout);
-    }
-
-    private void testDataBase()
-    {
-        GoogleMySQLDataBase googleMySQLDataBase = new GoogleMySQLDataBase(getContext());
-
-        UserData userData = new UserData("222", "yenimail@gmail.com");
-
-        //googleMySQLDataBase.insert(DataTables.User, UserData.class, userData);
-        googleMySQLDataBase.update(DataTables.User, UserData.class, 222, userData);
     }
 }

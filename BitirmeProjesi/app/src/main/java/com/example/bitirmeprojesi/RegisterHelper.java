@@ -1,6 +1,7 @@
 package com.example.bitirmeprojesi;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.text.InputType;
 import android.view.View;
