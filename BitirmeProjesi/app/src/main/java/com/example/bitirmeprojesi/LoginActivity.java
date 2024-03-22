@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity
 
         setForgetPasswordTextListener();
         setLogInTextListener();
-        setLogInGoogleImageListener();
+        //setLogInGoogleImageListener();
         setSignUpButtonListener();
     }
 
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity
 
         buttonSignIn = findViewById(R.id.sign_in_button);
 
-        imageGoogle = findViewById(R.id.google_button);
+        //imageGoogle = findViewById(R.id.google_button);
 
         imagePasswordToggle = findViewById(R.id.password_toggle);
 

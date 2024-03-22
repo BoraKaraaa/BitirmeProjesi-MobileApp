@@ -4,22 +4,26 @@ import androidx.annotation.NonNull;
 
 public class UserData extends Data
 {
+    public enum Gender { Male, Female, Other }
+    public enum ActivityLevel { Sedentary, LightlyActive, ModeratelyActive, VeryActive, ExtraActive }
+
     private String UserID;
     private String Username;
     private String Email;
-    private String Gender;
+    private Gender Gender;
     private Integer Age;
     private Integer Height;
     private Integer Weight;
-    private String ActivityLevel;
+    private ActivityLevel ActivityLevel;
     private Integer GoalID;
     private Integer DietPreferenceID;
     private Integer RegionID;
+    private String Extra;
 
     // Constructor
-    public UserData(String userID, String username, String email, String gender, Integer age,
-                    Integer height, Integer weight, String activityLevel, Integer goalID,
-                    Integer dietPreferenceID, Integer regionID)
+    public UserData(String userID, String username, String email, Gender gender, Integer age,
+                    Integer height, Integer weight, ActivityLevel activityLevel, Integer goalID,
+                    Integer dietPreferenceID, Integer regionID, String extra)
     {
         this.UserID = userID;
         this.Username = username;
@@ -32,6 +36,7 @@ public class UserData extends Data
         this.GoalID = goalID;
         this.DietPreferenceID = dietPreferenceID;
         this.RegionID = regionID;
+        this.Extra = extra;
     }
 
     public UserData(String userID, String username, String email)
@@ -72,15 +77,17 @@ public class UserData extends Data
         this.Email = email;
     }
 
-    public String getGender() {
+    public Gender getGender()
+    {
         return Gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.Gender = gender;
     }
 
-    public Integer getAge() {
+    public Integer getAge()
+    {
         return Age;
     }
 
@@ -104,11 +111,11 @@ public class UserData extends Data
         this.Weight = weight;
     }
 
-    public String getActivityLevel() {
+    public ActivityLevel getActivityLevel() {
         return ActivityLevel;
     }
 
-    public void setActivityLevel(String activityLevel) {
+    public void setActivityLevel(ActivityLevel activityLevel) {
         this.ActivityLevel = activityLevel;
     }
 
@@ -136,11 +143,16 @@ public class UserData extends Data
         this.RegionID = regionID;
     }
 
+    public String getExtra() { return Extra; }
+
+    public void setExtra(String extra) { Extra = extra; }
+
     @NonNull
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "UserData{" +
-                "UserID=" + UserID +
+                "UserID='" + UserID + '\'' +
                 ", Username='" + Username + '\'' +
                 ", Email='" + Email + '\'' +
                 ", Gender='" + Gender + '\'' +
@@ -151,6 +163,7 @@ public class UserData extends Data
                 ", GoalID=" + GoalID +
                 ", DietPreferenceID=" + DietPreferenceID +
                 ", RegionID=" + RegionID +
+                ", Extra='" + Extra + '\'' +
                 '}';
     }
 }

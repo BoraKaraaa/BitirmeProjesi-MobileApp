@@ -49,7 +49,7 @@ public class SignupActivity extends AppCompatActivity
         clickablePasswordEye();
 
         setLogInTextListener();
-        setLogInGoogleImageListener();
+        //setLogInGoogleImageListener();
         setSignUpButtonListener();
     }
 
@@ -62,7 +62,7 @@ public class SignupActivity extends AppCompatActivity
 
         buttonSignUp = findViewById(R.id.sign_up_button);
 
-        imageGoogle = findViewById(R.id.google_button);
+        //imageGoogle = findViewById(R.id.google_button);
 
         imagePasswordToggle = findViewById(R.id.password_toggle);
         imageConfirmPasswordToggle = findViewById(R.id.confirm_password_toggle);
@@ -145,7 +145,7 @@ public class SignupActivity extends AppCompatActivity
 
                                 saveCurrentUserID(fireBaseRegisterHelper.firebaseAuth.getUid());
 
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), UserInformation.class);
                                 startActivity(intent);
                                 finish();
                             }

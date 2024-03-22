@@ -1,21 +1,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    >
+    android:background="@drawable/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="25dp">
-
-
-        <ImageView
-            android:id="@+id/backImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/backbutton" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +49,7 @@
                 android:id="@+id/genderSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:entries="@array/cinsiyetler"/>
+                android:entries="@array/genders"/>
 
         </LinearLayout>
 
@@ -114,8 +106,7 @@
             <Spinner
                 android:id="@+id/goalSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/hedefler"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -158,8 +149,7 @@
             <Spinner
                 android:id="@+id/dietPreferenceSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/diyet_tercihleri"/>
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 
@@ -180,8 +170,7 @@
                 android:id="@+id/countrySpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/countries"/>
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -193,19 +182,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Region:"
+                android:text="State:"
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:paddingRight="25dp"/>
 
             <Spinner
-                android:id="@+id/regionSpinner"
+                android:id="@+id/stateSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/diyet_tercihleri"/>
+                android:layout_weight="1" />
 
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/extraInformationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Extra Information"
+            android:background="@drawable/textbackground"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="60dp"
+            android:singleLine="false"
+            android:allowUndo="true" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -216,8 +216,19 @@
             android:background="@drawable/login_button"
             android:text="SAVE"
             android:textColor="#F3EEF3"
+            android:layout_marginTop="0dp"
+            android:textSize="35sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/log_out_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="80dp"
+            android:background="@drawable/log_out_button"
+            android:text="Log out"
+            android:textColor="#F3EEF3"
             android:layout_marginTop="10dp"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
 </ScrollView>
