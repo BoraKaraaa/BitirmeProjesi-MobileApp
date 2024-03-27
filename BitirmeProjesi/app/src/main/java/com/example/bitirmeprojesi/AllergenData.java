@@ -41,6 +41,5 @@ public class AllergenData extends Data
                 ", allergenName='" + AllergenName + '\'' +
                 '}';
     }
-
 }
 

@@ -1,6 +1,7 @@
 package com.example.bitirmeprojesi;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -15,10 +16,32 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JSONHelper<T>
 {
+    public static class JSONDictionary
+    {
+        private static Map<DataTables, String> jsonFileNames = new HashMap<>();
+
+        private static final String postFix = "Data";
+
+        static
+        {
+            for (DataTables value : DataTables.values())
+            {
+                jsonFileNames.put(value, value.toString() + postFix);
+            }
+        }
+
+        public static String toString(DataTables dataTable)
+        {
+            return jsonFileNames.get(dataTable);
+        }
+    }
+
     private final String FILE_NAME;
 
     public JSONHelper(String fileName)
@@ -66,20 +89,10 @@ public class JSONHelper<T>
 
     public void writeJSON(Context context, Class<T> type, T data)
     {
-        JSONArray jsonArray = new JSONArray();
-
         try
         {
             JSONObject jsonObject = new JSONObject(new Gson().toJson(data));
-            jsonArray.put(jsonObject);
-        }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
 
-        try
-        {
             File file = new File(context.getFilesDir(), FILE_NAME);
 
             if (!file.exists())
@@ -88,10 +101,10 @@ public class JSONHelper<T>
             }
 
             FileOutputStream outputStream = context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
-            outputStream.write(jsonArray.toString().getBytes());
+            outputStream.write(jsonObject.toString().getBytes());
             outputStream.close();
         }
-        catch (IOException e)
+        catch (IOException | JSONException e)
         {
             e.printStackTrace();
         }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,9 @@ public class HomeFragment extends Fragment
 
     SharedPreferences userPref;
     GoogleMySQLDataBase googleMySQLDataBase;
+    JSONHelper<UserData> userDataJSONHelper;
+
+    private UserData userData;
 
     private final String WELCOME_PREFIX = "Hello, ";
 
@@ -35,6 +39,7 @@ public class HomeFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         googleMySQLDataBase = new GoogleMySQLDataBase(getContext());
+        userDataJSONHelper = new JSONHelper<UserData>(JSONHelper.JSONDictionary.toString(DataTables.User));
 
         initViews(view);
 
@@ -76,11 +81,26 @@ public class HomeFragment extends Fragment
 
         if(!userID.equals(""))
         {
+            if(userDataJSONHelper.doesFileExist(getContext()))
+            {
+                UserData userData = userDataJSONHelper.readSingleDataJSON(getContext(), UserData.class);
+
+                this.userData = userData;
+                if(userData.getUsername() != null)
+                {
+                    homeText.setText(WELCOME_PREFIX + userData.getUsername());
+                }
+
+                return;
+            }
+
             googleMySQLDataBase.getById(DataTables.User, UserData.class, userID, new DataBase.SingleDataCallback<UserData>()
             {
                 @Override
                 public void onResponse(UserData data)
                 {
+                    userData = data;
+
                     if(data.getUsername() != null)
                     {
                         homeText.setText(WELCOME_PREFIX + data.getUsername());

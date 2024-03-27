@@ -26,7 +26,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class UserInformation extends AppCompatActivity
 {
-    EditText userName, age, height, weight, extraInformation;
+    EditText userName, age, height, weight, allergen, extraInformation;
     Spinner genderSpinner, goalSpinner, activityLevelSpinner, dietPreferenceSpinner,
             countrySpinner, stateSpinner;
     Button saveUserInformation, logOutButton;
@@ -39,10 +39,15 @@ public class UserInformation extends AppCompatActivity
     private List<RegionData> regionDataList;
     private List<GoalData> goalDataList;
     private List<DietPreferenceData> dietPreferenceDataList;
+    private List<AllergenData> allergenDataList;
+    private List<UserAllergyData> userAllergyDataList;
 
     private boolean externalStateSelection = false;
 
     private UserData userData;
+
+    private final int TOTAL_GET_DATA_AMOUNT = 5;
+    private int totalGatheredData = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,26 +56,14 @@ public class UserInformation extends AppCompatActivity
         setContentView(R.layout.activity_user_information);
 
         googleMySQLDataBase = new GoogleMySQLDataBase(this);
-        userDataJSONHelper = new JSONHelper<UserData>("UserData");
+        userDataJSONHelper = new JSONHelper<UserData>(JSONHelper.JSONDictionary.toString(DataTables.User));
 
         initViews();
 
-        CountDownLatch latch = new CountDownLatch(3);
-
-        initCountryValues(latch);
-        initGoalSpinnerValues(latch);
-        initDietPreferenceSpinnerValues(latch);
-
-        try
-        {
-            latch.await();
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-
-        initUserInformation();
+        initCountryValues();
+        initGoalSpinnerValues();
+        initDietPreferenceSpinnerValues();
+        initAllergenValues();
 
         setCountrySpinnerListener();
         setSaveButtonListener();
@@ -86,6 +79,7 @@ public class UserInformation extends AppCompatActivity
         age = findViewById(R.id.ageEditText);
         height = findViewById(R.id.heightEditText);
         weight = findViewById(R.id.weightEditText);
+        allergen = findViewById(R.id.allergenEditText);
 
         genderSpinner = findViewById(R.id.genderSpinner);
         goalSpinner = findViewById(R.id.goalSpinner);
@@ -97,7 +91,16 @@ public class UserInformation extends AppCompatActivity
         extraInformation = findViewById(R.id.extraInformationEditText);
     }
 
-    private void initCountryValues(final CountDownLatch latch)
+    private void checkAllDataGathered()
+    {
+        if(++totalGatheredData == TOTAL_GET_DATA_AMOUNT)
+        {
+            initUserInformation();
+            totalGatheredData = 0;
+        }
+    }
+
+    private void initCountryValues()
     {
         googleMySQLDataBase.getTable(DataTables.Region, RegionData.class, new DataBase.MultipleDataCallback<RegionData>()
         {
@@ -105,6 +108,7 @@ public class UserInformation extends AppCompatActivity
             public void onResponse(List<RegionData> dataList)
             {
                 regionDataList = dataList;
+                checkAllDataGathered();
             }
         });
 
@@ -121,11 +125,9 @@ public class UserInformation extends AppCompatActivity
         ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countryNames);
         countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         countrySpinner.setAdapter(countryAdapter);
-
-        latch.countDown();
     }
 
-    private void initGoalSpinnerValues(final CountDownLatch latch)
+    private void initGoalSpinnerValues()
     {
         googleMySQLDataBase.getTable(DataTables.Goal, GoalData.class, new DataBase.MultipleDataCallback<GoalData>()
         {
@@ -153,13 +155,13 @@ public class UserInformation extends AppCompatActivity
                 goalSpinner.setAdapter(goalAdapter);
 
                 //goalSpinner.setSelection(goalIndex);
+
+                checkAllDataGathered();
             }
         });
-
-        latch.countDown();
     }
 
-    private void initDietPreferenceSpinnerValues(final CountDownLatch latch)
+    private void initDietPreferenceSpinnerValues()
     {
         googleMySQLDataBase.getTable(DataTables.DietPreference, DietPreferenceData.class, new DataBase.MultipleDataCallback<DietPreferenceData>()
         {
@@ -182,10 +184,33 @@ public class UserInformation extends AppCompatActivity
                 dietPreferenceSpinner.setAdapter(dietPreferenceAdapter);
 
                 //dietPreferenceSpinner.setSelection(dietPreferenceIndex);
+
+                checkAllDataGathered();
+            }
+        });
+    }
+
+    private void initAllergenValues()
+    {
+        googleMySQLDataBase.getTable(DataTables.Allergen, AllergenData.class, new DataBase.MultipleDataCallback<AllergenData>()
+        {
+            @Override
+            public void onResponse(List<AllergenData> dataList)
+            {
+                allergenDataList = dataList;
+                checkAllDataGathered();
             }
         });
 
-        latch.countDown();
+        googleMySQLDataBase.getTable(DataTables.UserAllergy, UserAllergyData.class, new DataBase.MultipleDataCallback<UserAllergyData>()
+        {
+            @Override
+            public void onResponse(List<UserAllergyData> dataList)
+            {
+                userAllergyDataList = dataList;
+                checkAllDataGathered();
+            }
+        });
     }
 
     private void initUserInformation()
@@ -196,7 +221,6 @@ public class UserInformation extends AppCompatActivity
 
         if(!userID.equals(""))
         {
-            /*
             if(userDataJSONHelper.doesFileExist(this))
             {
                 UserData userData = userDataJSONHelper.readSingleDataJSON(this, UserData.class);
@@ -210,7 +234,6 @@ public class UserInformation extends AppCompatActivity
                     return;
                 }
             }
-            */
 
             googleMySQLDataBase.getById(DataTables.User, UserData.class, userID, new DataBase.SingleDataCallback<UserData>()
             {
@@ -292,6 +315,26 @@ public class UserInformation extends AppCompatActivity
         {
             dietPreferenceSpinner.setSelection(0);
         }
+
+        StringBuilder allergenText = new StringBuilder();
+
+        boolean firstAllergen = true;
+
+        for (UserAllergyData userAllergyData : userAllergyDataList)
+        {
+            if(userAllergyData.getUserID().equals(userData.getUserID()))
+            {
+                if(!firstAllergen)
+                {
+                    allergenText.append(",");
+                }
+
+                allergenText.append(allergenDataList.get(userAllergyData.getAllergenID() - 1).getAllergenName());
+                firstAllergen = false;
+            }
+        }
+
+        allergen.setText(allergenText.toString());
 
         if(userData.getRegionID() != null)
         {
@@ -529,8 +572,69 @@ public class UserInformation extends AppCompatActivity
             }
         }
 
+        String text = allergen.getText().toString();
+        String[] allergenNames = text.split(",");
+
+        int sizeCounter = 0;
+
+        for (String allergenName : allergenNames)
+        {
+            int allergenID = -1;
+            boolean allergenNameFounded = false;
+
+            for (AllergenData allergenData : allergenDataList)
+            {
+                if(allergenData.getAllergenName().equals(allergenName))
+                {
+                    allergenID = allergenData.getAllergenID();
+                    allergenNameFounded = true;
+                    break;
+                }
+            }
+
+            if(!allergenNameFounded)
+            {
+                allergenID = allergenDataList.size() + 1 + sizeCounter++;
+                googleMySQLDataBase.insert(DataTables.Allergen, AllergenData.class,
+                        new AllergenData(allergenID, allergenName));
+            }
+
+            boolean userAllergyFounded = false;
+            boolean userAllergyDeleted = true;
+
+            for (UserAllergyData userAllergyData : userAllergyDataList)
+            {
+                if(userAllergyData.getUserID().equals(userData.getUserID())
+                        && userAllergyData.getAllergenID() == allergenID)
+                {
+                    userAllergyFounded = true;
+                    //break;
+                }
+
+                if(userAllergyData.getUserID().equals(userData.getUserID())
+                        && allergenName.equals(allergenDataList.get(
+                                userAllergyData.getAllergenID()-1).getAllergenName()))
+                {
+                    userAllergyDeleted = false;
+                }
+            }
+
+            if(!userAllergyFounded)
+            {
+                googleMySQLDataBase.insert(DataTables.UserAllergy, UserAllergyData.class,
+                        new UserAllergyData(userData.getUserID(), allergenID));
+            }
+
+            if(userAllergyDeleted)
+            {
+                // delete
+                // googleMySQLDataBase.delete(DataTables.UserAllergy, UserAllergyData.class, );
+            }
+
+        }
+
         googleMySQLDataBase.update(DataTables.User, UserData.class, userData.getUserID(), userData);
-        //userDataJSONHelper.writeJSON(this, UserData.class, userData);
+        userDataJSONHelper.writeJSON(this, UserData.class, userData);
     }
 
 

@@ -368,7 +368,7 @@ tools:context=".HomeFragment"
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="472KCAL"
+                            android:text="300KCAL"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="#79AC67"
@@ -377,7 +377,13 @@ tools:context=".HomeFragment"
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Pancake"
+                            android:text="Scrambled egg spread on toast"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Protein Shake"
                             android:textSize="15sp"/>
 
                         <!-- Add more views for other meal items if needed -->
@@ -410,7 +416,7 @@ tools:context=".HomeFragment"
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="472KCAL"
+                            android:text="305KCAL"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="#79AC67"
@@ -419,7 +425,54 @@ tools:context=".HomeFragment"
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Pancake"
+                            android:text="Grilled Chicken with White Bean"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tomato Salad"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Snacks"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:fontFamily="sans-serif-medium"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="120KCAL"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#79AC67"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Vegetable sticks"
                             android:textSize="15sp"/>
 
                         <!-- Add more views for other meal items if needed -->
@@ -452,7 +505,7 @@ tools:context=".HomeFragment"
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="472KCAL"
+                            android:text="298KCAL"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="#79AC67"
@@ -461,52 +514,21 @@ tools:context=".HomeFragment"
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Pancake"
+                            android:text="Broiled Fish"
                             android:textSize="15sp"/>
 
-                        <!-- Add more views for other meal items if needed -->
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:elevation="4dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="15dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Dinner"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:fontFamily="sans-serif-medium"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="472KCAL"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="#79AC67"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Pancake"
+                            android:text="Brown rice"
                             android:textSize="15sp"/>
 
-                        <!-- Add more views for other meal items if needed -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Mixed Green Salad"
+                            android:textSize="15sp"/>
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
